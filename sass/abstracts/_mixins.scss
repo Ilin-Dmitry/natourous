@@ -1,0 +1,35 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// ORDER TO CHANGE MEDIA QUERIES 
+// base + typography => general layout + grid => page layout => components 
+// 1em = 16px
+@mixin respond($device) {
+    @if $device == phone {
+        @media only screen and (max-width: 37.5em) { @content } 
+    };
+
+    @if $device == tab-port {
+        @media only screen and (max-width: 56.25em) { @content }
+    };
+
+    @if $device == tab-land {
+        @media only screen and (max-width: 75em) { @content }
+    };
+
+    @if $device == desk-big {
+        @media only screen and (min-width: 112.5em) { @content }
+    };
+}
